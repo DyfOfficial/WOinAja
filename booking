@@ -1,0 +1,27 @@
+import { useState } from 'react';
+import { Input, Button, Calendar } from '@nextui-org/react';
+
+const BookingForm = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', service: '', date: '' });
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    alert('Permintaan Booking Dikirim!');
+  };
+
+  return (
+    <div className="p-4">
+      <h2 className="text-2xl mb-4">Form Booking Vendor</h2>
+      <Input name="name" placeholder="Nama Lengkap" value={formData.name} onChange={handleInputChange} className="mb-4" />
+      <Input name="email" placeholder="Email / WhatsApp" value={formData.email} onChange={handleInputChange} className="mb-4" />
+      <Input name="service" placeholder="Layanan yang Dibutuhkan" value={formData.service} onChange={handleInputChange} className="mb-4" />
+      <Calendar value={formData.date} onChange={(date) => setFormData({ ...formData, date })} className="mb-4" />
+      <Button onClick={handleSubmit}>Kirim Permintaan</Button>
+    </div>
+  );
+};
+
+export default BookingForm;
