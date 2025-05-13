@@ -1,0 +1,14 @@
+import Image from 'next/image';
+
+const VendorCard = ({ vendor }) => {
+  return (
+    <div className="border rounded-lg p-4">
+      <Image src={vendor.image} alt={vendor.name} width={400} height={250} className="rounded-xl mb-4" />
+      <h3 className="text-xl font-bold mb-2">{vendor.name}</h3>
+      <p className="text-gray-500 text-sm mb-4">{vendor.description}</p>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">Jelajahi Vendor</button>
+    </div>
+  );
+};
+
+export default VendorCard;
