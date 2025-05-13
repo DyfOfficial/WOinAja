@@ -1,0 +1,26 @@
+woinaja-site/
+│
+├── components/
+│   ├── VendorCard.js
+│   ├── Navbar.js
+│   ├── Footer.js
+│   └── BookingForm.js
+│
+├── pages/
+│   ├── index.js
+│   ├── vendors.js
+│   ├── booking.js
+│   └── contact.js
+│
+├── public/
+│   ├── images/
+│   │   ├── dekorasi.jpg
+│   │   ├── fotografi.jpg
+│   │   ├── catering.jpg
+│   │   └── makeup.jpg
+│
+├── styles/
+│   ├── globals.css
+│   ├── Home.module.css
+│
+└── next.config.js
