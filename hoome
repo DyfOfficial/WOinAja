@@ -1,0 +1,18 @@
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
+const Home = () => {
+  return (
+    <div>
+      <Navbar />
+      <main className="text-center py-12 bg-gray-100 rounded-xl">
+        <h2 className="text-2xl font-semibold mb-4">Rencanakan Pernikahan Anda Tanpa Ribet</h2>
+        <p className="text-gray-600 mb-6">Layanan lengkap mulai dari dekorasi, dokumentasi, hingga catering, semua bisa Anda pesan di WOinAja.com.</p>
+        <button className="bg-green-500 text-white px-6 py-3 rounded-lg">Mulai Sekarang</button>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Home;
