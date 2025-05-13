@@ -1,0 +1,17 @@
+import VendorCard from '../components/VendorCard';
+import vendorsData from '../data/vendors';
+
+const Vendors = () => {
+  return (
+    <div>
+      <h1 className="text-center text-3xl mb-6">Vendors Kami</h1>
+      <div className="grid md:grid-cols-3 gap-6">
+        {vendorsData.map((vendor) => (
+          <VendorCard key={vendor.name} vendor={vendor} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Vendors;
