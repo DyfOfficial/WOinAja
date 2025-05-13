@@ -1,0 +1,114 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Calendar } from "@/components/ui/calendar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { MapPin, Clock, Mail, Phone } from "lucide-react";
+
+const vendors = [
+  { name: "Dekorasi", description: "Paket dekorasi elegan dan minimalis.", image: "/images/dekorasi.jpg" },
+  { name: "Fotografi", description: "Dokumentasi profesional dengan hasil terbaik.", image: "/images/fotografi.jpg" },
+  { name: "WO", description: "Wedding organizer berpengalaman.", image: "/images/wo.jpg" },
+  { name: "MC", description: "MC yang komunikatif dan profesional.", image: "/images/mc.jpg" },
+  { name: "Catering", description: "Menu lezat untuk berbagai selera.", image: "/images/catering.jpg" },
+  { name: "Make Up", description: "Makeup artis terbaik di kota Anda.", image: "/images/makeup.jpg" },
+];
+
+export default function WOinAjaAlt() {
+  return (
+    <main className="p-6 max-w-6xl mx-auto">
+      <header className="text-center mb-10">
+        <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-4xl font-bold">
+          WOinAja.com
+        </motion.h1>
+        <p className="text-gray-600 mt-2">Temukan semua vendor pernikahan dalam satu platform</p>
+      </header>
+
+      <Tabs defaultValue="home">
+        <TabsList className="grid grid-cols-4 gap-2 mb-6">
+          <TabsTrigger value="home">Beranda</TabsTrigger>
+          <TabsTrigger value="vendors">Vendor</TabsTrigger>
+          <TabsTrigger value="booking">Booking</TabsTrigger>
+          <TabsTrigger value="akun">Akun</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="home">
+          <section className="text-center py-12 bg-gray-100 rounded-xl">
+            <h2 className="text-2xl font-semibold mb-4">Rencanakan Pernikahan Anda Tanpa Ribet</h2>
+            <p className="text-gray-600 mb-6">Layanan lengkap mulai dari dekorasi, dokumentasi, hingga catering, semua bisa Anda pesan di WOinAja.com.</p>
+            <Button size="lg">Mulai Sekarang</Button>
+          </section>
+        </TabsContent>
+
+        <TabsContent value="vendors">
+          <section className="grid md:grid-cols-3 gap-6">
+            {vendors.map((v) => (
+              <Card key={v.name}>
+                <CardContent className="p-4">
+                  <Image src={v.image} alt={v.name} width={400} height={250} className="rounded-xl mb-4" />
+                  <h3 className="text-xl font-bold mb-2">{v.name}</h3>
+                  <p className="text-gray-500 text-sm mb-4">{v.description}</p>
+                  <Button>Jelajahi Vendor</Button>
+                </CardContent>
+              </Card>
+            ))}
+          </section>
+        </TabsContent>
+
+        <TabsContent value="booking">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Form Booking Vendor</h3>
+              <Input placeholder="Nama Lengkap" className="mb-4" />
+              <Input placeholder="Email / WhatsApp" className="mb-4" />
+              <Input placeholder="Layanan yang Dibutuhkan" className="mb-4" />
+              <Calendar className="mb-4" />
+              <Button className="w-full">Kirim Permintaan</Button>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Info Tambahan</h3>
+              <p className="text-gray-600">Kami akan menghubungkan Anda dengan vendor terbaik berdasarkan tanggal dan lokasi pilihan.</p>
+            </div>
+          </div>
+        </TabsContent>
+
+        <TabsContent value="akun">
+          <section>
+            <h3 className="text-xl font-semibold mb-4">Kelola Akun Anda</h3>
+            <p className="text-gray-600 mb-2">- Lihat status booking</p>
+            <p className="text-gray-600 mb-2">- Simpan vendor favorit</p>
+            <p className="text-gray-600 mb-2">- Tulis dan baca ulasan</p>
+            <Button className="mt-4">Login / Daftar</Button>
+          </section>
+        </TabsContent>
+      </Tabs>
+
+      <footer className="text-center mt-12 text-sm text-gray-500">
+        <p className="mb-4">&copy; {new Date().getFullYear()} WOinAja.com</p>
+        <div className="flex justify-center gap-4 mb-4">
+          <a href="https://wa.me/6287736739523" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:underline">
+            Hubungi via WhatsApp
+          </a>
+          <a href="mailto:WOinaAja01@gmail.com" className="text-blue-600 hover:underline">
+            Kirim Email
+          </a>
+        </div>
+        <div className="flex justify-center gap-4 mb-6">
+          <a href="https://wa.me/6287736739523" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-green-500 hover:bg-green-600 text-white"><Phone className="w-4 h-4 mr-2" /> Chat WhatsApp</Button>
+          </a>
+          <a href="mailto:WOinaAja01@gmail.com">
+            <Button className="bg-blue-500 hover:bg-blue-600 text-white"><Mail className="w-4 h-4 mr-2" /> Kirim Email</Button>
+          </a>
+        </div>
+        <div className="text-gray-600 flex flex-col items-center gap-2">
+          <p className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Surabaya, Jawa Timur</p>
+          <p className="flex items-center gap-2"><Clock className="w-4 h-4" /> Buka: Senin - Sabtu, 08.00 - 17.00</p>
+        </div>
+      </footer>
+    </main>
+  );
+}
