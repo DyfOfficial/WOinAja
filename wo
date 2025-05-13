@@ -1,0 +1,26 @@
+import zipfile
+import os
+
+# Buat direktori struktur proyek dasar
+base_dir = "/mnt/data/woinaja-site"
+public_images = os.path.join(base_dir, "public/images")
+os.makedirs(public_images, exist_ok=True)
+
+# Buat file dummy gambar sebagai pengganti dekorasi, fotografi, dsb.
+vendor_images = [
+    "dekorasi.jpg", "fotografi.jpg", "wo.jpg", "mc.jpg", "catering.jpg", "makeup.jpg"
+]
+for img in vendor_images:
+    with open(os.path.join(public_images, img), "wb") as f:
+        f.write(b"\x89PNG\r\n\x1a\n")  # Dummy PNG header
+
+# Simpan file ZIP
+zip_path = "/mnt/data/woinaja-site.zip"
+with zipfile.ZipFile(zip_path, "w") as zipf:
+    for foldername, subfolders, filenames in os.walk(base_dir):
+        for filename in filenames:
+            filepath = os.path.join(foldername, filename)
+            arcname = os.path.relpath(filepath, base_dir)
+            zipf.write(filepath, arcname)
+
+zip_path
