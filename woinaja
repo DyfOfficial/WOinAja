@@ -1,0 +1,14 @@
+# Inisialisasi git jika belum dilakukan
+git init
+
+# Menambahkan remote repository GitHub (ganti dengan URL repository GitHub kamu)
+git remote add origin https://github.com/dyf/woinaja-site.git
+
+# Menambahkan semua file untuk commit
+git add .
+
+# Commit file yang ditambahkan
+git commit -m "Initial commit"
+
+# Push ke repository GitHub
+git push -u origin master
